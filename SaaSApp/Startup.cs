@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using OrchardCore.ResourceManagement;
 
 namespace SaaSApp
 {
@@ -16,6 +17,7 @@ namespace SaaSApp
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IResourceManifestProvider, ResourcesBuilder.ResourceManifest>();
             services.AddOrchardCms();
             services.Configure<IdentityOptions>(options =>
             {
